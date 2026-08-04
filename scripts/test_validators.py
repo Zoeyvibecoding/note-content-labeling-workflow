@@ -83,7 +83,42 @@ with tempfile.TemporaryDirectory() as tmp:
     image_path = tmpdir / "image.json"
     video_path.write_text(json.dumps(video, ensure_ascii=False), "utf-8")
     image_path.write_text(json.dumps(image, ensure_ascii=False), "utf-8")
-    run("validate_delivery.py", ["--video", str(video_path), "--image", str(image_path)], 0)
+    run(
+        "validate_delivery.py",
+        ["--phase", "labeled", "--video", str(video_path), "--image", str(image_path)],
+        0,
+    )
+
+    content_video = [
+        {key: value for key, value in row.items() if key not in {
+            "label", "label_reason", "label_source", "rules_version", "rules_hash", "rules_fetched_at"
+        }}
+        for row in video
+    ]
+    content_image = [
+        {key: value for key, value in row.items() if key not in {
+            "label", "label_reason", "label_source", "rules_version", "rules_hash", "rules_fetched_at"
+        }}
+        for row in image
+    ]
+    content_video_path = tmpdir / "content-video.json"
+    content_image_path = tmpdir / "content-image.json"
+    content_video_path.write_text(json.dumps(content_video, ensure_ascii=False), "utf-8")
+    content_image_path.write_text(json.dumps(content_image, ensure_ascii=False), "utf-8")
+    run(
+        "validate_delivery.py",
+        [
+            "--phase", "content",
+            "--video", str(content_video_path),
+            "--image", str(content_image_path),
+        ],
+        0,
+    )
+
+    run(
+        "validate_delivery.py",
+        ["--phase", "content", "--video", str(video_path), "--image", str(image_path)],
+        1,
+    )
 
 print("validator tests passed")
-

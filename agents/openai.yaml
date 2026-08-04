@@ -1,8 +1,7 @@
 interface:
   display_name: "笔记内容打标工作流"
-  short_description: "从投放底表到内容理解、严格打标和双 Sheet 过程文件"
-  default_prompt: "Use $note-content-labeling-workflow to select Top N notes, retrieve Athena content, understand video and image notes, apply validated beauty labels, and deliver the two-sheet workbook."
+  short_description: "双过程文件确认后生成并发布公开可读的Vercel复盘报告"
+  default_prompt: "Use $note-content-labeling-workflow to send v1 for content confirmation, send v2 for label confirmation, then generate and deploy the public report to Vercel for final approval."
 
 policy:
   allow_implicit_invocation: true
-

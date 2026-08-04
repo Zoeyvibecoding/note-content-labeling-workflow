@@ -13,11 +13,14 @@ VIDEO_SOURCE = re.compile(r"(?:ASR|花字|字幕|包装|帧|秒|s\b)", re.I)
 IMAGE_SOURCE = re.compile(r"(?:Athena正文|图片\s*\d+)", re.I)
 FORMULA_ERRORS = re.compile(r"#REF!|#DIV/0!|#VALUE!|#NAME\?|#N/A", re.I)
 
-COMMON = (
+CONTENT_COMMON = (
     "note_id",
     "note_link",
     "note_type",
     "summary",
+)
+
+LABEL_COMMON = (
     "label",
     "label_reason",
     "label_source",
@@ -35,13 +38,14 @@ def text(row: dict, *names: str) -> str:
     return ""
 
 
-def validate(rows: list[dict], kind: str) -> list[str]:
+def validate(rows: list[dict], kind: str, phase: str) -> list[str]:
     errors: list[str] = []
     ids: list[str] = []
     for index, row in enumerate(rows, 1):
         note_id = text(row, "note_id", "笔记ID") or f"row-{index}"
         ids.append(note_id)
-        for field in COMMON:
+        required_fields = CONTENT_COMMON + (LABEL_COMMON if phase == "labeled" else ())
+        for field in required_fields:
             aliases = {
                 "note_link": ("note_link", "跳转链接"),
                 "note_type": ("note_type", "笔记类型"),
@@ -52,6 +56,18 @@ def validate(rows: list[dict], kind: str) -> list[str]:
             }.get(field, (field,))
             if not text(row, *aliases):
                 errors.append(f"{kind} {note_id}: missing {field}")
+        if phase == "content":
+            premature_labels = {
+                "label": text(row, "label", "打标结果"),
+                "label_reason": text(row, "label_reason", "打标结果原因"),
+                "label_source": text(row, "label_source", "打标结果来源"),
+            }
+            populated = [name for name, value in premature_labels.items() if value]
+            if populated:
+                errors.append(
+                    f"{kind} {note_id}: v1 content phase contains premature label fields: "
+                    + ", ".join(populated)
+                )
         link = text(row, "note_link", "跳转链接")
         if link and not LINK.match(link):
             errors.append(f"{kind} {note_id}: invalid Xiaohongshu link")
@@ -101,15 +117,17 @@ def validate(rows: list[dict], kind: str) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--phase", required=True, choices=("content", "labeled"))
     parser.add_argument("--video", required=True)
     parser.add_argument("--image", required=True)
     args = parser.parse_args()
     video = json.loads(Path(args.video).read_text("utf-8"))
     image = json.loads(Path(args.image).read_text("utf-8"))
-    errors = validate(video, "video") + validate(image, "image")
+    errors = validate(video, "video", args.phase) + validate(image, "image", args.phase)
     report = {
         "video_rows": len(video),
         "image_rows": len(image),
+        "phase": args.phase,
         "passed": not errors,
         "errors": errors,
     }
@@ -119,4 +137,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
