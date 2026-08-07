@@ -1,7 +1,7 @@
 interface:
   display_name: "笔记内容打标工作流"
-  short_description: "双过程文件确认后生成并发布公开可读的Vercel复盘报告"
-  default_prompt: "Use $note-content-labeling-workflow to send v1 for content confirmation, send v2 for label confirmation, then generate and deploy the public report to Vercel for final approval."
+  short_description: "每个SPU交付完整继承理解字段的双Sheet过程文件与公开报告"
+  default_prompt: "Use $note-content-labeling-workflow to deliver one two-sheet workbook per SPU, preserve every confirmed v1 understanding field and value in v2, append validated labeling evidence and audit fields, then generate and deploy the public report after confirmation."
 
 policy:
   allow_implicit_invocation: true

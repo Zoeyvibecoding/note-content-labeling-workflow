@@ -21,13 +21,38 @@ CONTENT_COMMON = (
 )
 
 LABEL_COMMON = (
+    "content_category",
     "label",
     "label_reason",
+    "label_evidence",
+    "counterfactual_check",
+    "nearest_label",
+    "exclusion_reason",
+    "confidence",
+    "review_flag",
     "label_source",
+    "understanding_status",
     "rules_version",
     "rules_hash",
     "rules_fetched_at",
 )
+
+LABEL_ALIASES = {
+    "content_category": ("content_category", "内容大类"),
+    "label": ("label", "打标结果", "打标标签"),
+    "label_reason": ("label_reason", "打标结果原因", "打标原因"),
+    "label_evidence": ("label_evidence", "内容证据"),
+    "counterfactual_check": ("counterfactual_check", "反事实检验"),
+    "nearest_label": ("nearest_label", "最邻近标签"),
+    "exclusion_reason": ("exclusion_reason", "排除原因"),
+    "confidence": ("confidence", "置信度"),
+    "review_flag": ("review_flag", "复核标记"),
+    "label_source": ("label_source", "打标结果来源"),
+    "understanding_status": ("understanding_status", "理解状态"),
+    "rules_version": ("rules_version", "打标规则版本", "字典版本"),
+    "rules_hash": ("rules_hash",),
+    "rules_fetched_at": ("rules_fetched_at",),
+}
 
 
 def text(row: dict, *names: str) -> str:
@@ -50,17 +75,13 @@ def validate(rows: list[dict], kind: str, phase: str) -> list[str]:
                 "note_link": ("note_link", "跳转链接"),
                 "note_type": ("note_type", "笔记类型"),
                 "summary": ("summary", "一句话总结"),
-                "label": ("label", "打标结果"),
-                "label_reason": ("label_reason", "打标结果原因"),
-                "label_source": ("label_source", "打标结果来源"),
-            }.get(field, (field,))
+            }.get(field, LABEL_ALIASES.get(field, (field,)))
             if not text(row, *aliases):
                 errors.append(f"{kind} {note_id}: missing {field}")
         if phase == "content":
             premature_labels = {
-                "label": text(row, "label", "打标结果"),
-                "label_reason": text(row, "label_reason", "打标结果原因"),
-                "label_source": text(row, "label_source", "打标结果来源"),
+                field: text(row, *LABEL_ALIASES.get(field, (field,)))
+                for field in LABEL_COMMON
             }
             populated = [name for name, value in premature_labels.items() if value]
             if populated:
@@ -115,15 +136,52 @@ def validate(rows: list[dict], kind: str, phase: str) -> list[str]:
     return errors
 
 
+def validate_inheritance(v1_rows: list[dict], v2_rows: list[dict], kind: str) -> list[str]:
+    errors: list[str] = []
+    v1_by_id = {text(row, "note_id", "笔记ID"): row for row in v1_rows}
+    v2_by_id = {text(row, "note_id", "笔记ID"): row for row in v2_rows}
+    if len(v1_rows) != len(v2_rows):
+        errors.append(f"{kind}: v2 row count differs from confirmed v1")
+    if set(v1_by_id) != set(v2_by_id):
+        missing = sorted(set(v1_by_id) - set(v2_by_id))
+        extra = sorted(set(v2_by_id) - set(v1_by_id))
+        errors.append(f"{kind}: v1/v2 note_id mismatch; missing={missing}, extra={extra}")
+        return errors
+
+    for note_id, v1_row in v1_by_id.items():
+        v2_row = v2_by_id[note_id]
+        v1_fields = list(v1_row.keys())
+        v2_fields = list(v2_row.keys())
+        if v2_fields[: len(v1_fields)] != v1_fields:
+            errors.append(
+                f"{kind} {note_id}: v1 fields were deleted, renamed, reordered, or not kept on the left"
+            )
+            continue
+        for field in v1_fields:
+            if v2_row.get(field) != v1_row.get(field):
+                errors.append(f"{kind} {note_id}: confirmed v1 value changed in field {field}")
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", required=True, choices=("content", "labeled"))
     parser.add_argument("--video", required=True)
     parser.add_argument("--image", required=True)
+    parser.add_argument("--v1-video")
+    parser.add_argument("--v1-image")
     args = parser.parse_args()
     video = json.loads(Path(args.video).read_text("utf-8"))
     image = json.loads(Path(args.image).read_text("utf-8"))
     errors = validate(video, "video", args.phase) + validate(image, "image", args.phase)
+    if args.phase == "labeled":
+        if not args.v1_video or not args.v1_image:
+            errors.append("labeled phase requires --v1-video and --v1-image inheritance inputs")
+        else:
+            v1_video = json.loads(Path(args.v1_video).read_text("utf-8"))
+            v1_image = json.loads(Path(args.v1_image).read_text("utf-8"))
+            errors += validate_inheritance(v1_video, video, "video")
+            errors += validate_inheritance(v1_image, image, "image")
     report = {
         "video_rows": len(video),
         "image_rows": len(image),

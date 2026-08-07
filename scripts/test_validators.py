@@ -52,9 +52,18 @@ with tempfile.TemporaryDirectory() as tmp:
             "asr_trace": "完整自动转录文本",
             "key_speech": "用下来脸上的细纹会变淡，苹果肌也更饱满。",
             "key_speech_source": "ASR 120.0–126.5s",
+            "内容来源": "Athena视频媒体与完整ASR",
+            "content_category": "破圈",
             "label": "日常生活",
             "label_reason": "生活动线构成完整主线，删除产品段后仍成立。",
+            "label_evidence": "ASR与完整时间轴支撑日常生活主线。",
+            "counterfactual_check": "删除产品后生活主线仍成立。",
+            "nearest_label": "场景任务",
+            "exclusion_reason": "无单一任务目标组织内容。",
+            "confidence": "高",
+            "review_flag": "无需复核",
             "label_source": "ASR与时间轴证据；rules v-test",
+            "understanding_status": "已完成",
             "rules_version": "v-test",
             "rules_hash": "abc",
             "rules_fetched_at": "2026-07-28T00:00:00Z",
@@ -71,9 +80,18 @@ with tempfile.TemporaryDirectory() as tmp:
             "image_structure": "钩子→展开→产品承接→证据→收束",
             "key_copy": "坚持使用后脸看起来更紧致饱满。",
             "key_copy_source": "Athena正文",
+            "内容来源": "Athena正文与全部图片",
+            "content_category": "美垂",
             "label": "单品主导",
             "label_reason": "唯一产品承担完整问题—体验—结果—建议链路。",
+            "label_evidence": "Athena正文与全部图片支撑单品主线。",
+            "counterfactual_check": "删除该产品后内容主线不成立。",
+            "nearest_label": "多品组合",
+            "exclusion_reason": "只有一个实际主导产品。",
+            "confidence": "高",
+            "review_flag": "无需复核",
             "label_source": "Athena正文与全部图片；rules v-test",
+            "understanding_status": "已完成",
             "rules_version": "v-test",
             "rules_hash": "abc",
             "rules_fetched_at": "2026-07-28T00:00:00Z",
@@ -83,21 +101,21 @@ with tempfile.TemporaryDirectory() as tmp:
     image_path = tmpdir / "image.json"
     video_path.write_text(json.dumps(video, ensure_ascii=False), "utf-8")
     image_path.write_text(json.dumps(image, ensure_ascii=False), "utf-8")
-    run(
-        "validate_delivery.py",
-        ["--phase", "labeled", "--video", str(video_path), "--image", str(image_path)],
-        0,
-    )
-
     content_video = [
         {key: value for key, value in row.items() if key not in {
-            "label", "label_reason", "label_source", "rules_version", "rules_hash", "rules_fetched_at"
+            "content_category", "label", "label_reason", "label_evidence",
+            "counterfactual_check", "nearest_label", "exclusion_reason", "confidence",
+            "review_flag", "label_source", "understanding_status", "rules_version",
+            "rules_hash", "rules_fetched_at"
         }}
         for row in video
     ]
     content_image = [
         {key: value for key, value in row.items() if key not in {
-            "label", "label_reason", "label_source", "rules_version", "rules_hash", "rules_fetched_at"
+            "content_category", "label", "label_reason", "label_evidence",
+            "counterfactual_check", "nearest_label", "exclusion_reason", "confidence",
+            "review_flag", "label_source", "understanding_status", "rules_version",
+            "rules_hash", "rules_fetched_at"
         }}
         for row in image
     ]
@@ -105,6 +123,15 @@ with tempfile.TemporaryDirectory() as tmp:
     content_image_path = tmpdir / "content-image.json"
     content_video_path.write_text(json.dumps(content_video, ensure_ascii=False), "utf-8")
     content_image_path.write_text(json.dumps(content_image, ensure_ascii=False), "utf-8")
+    run(
+        "validate_delivery.py",
+        [
+            "--phase", "labeled",
+            "--video", str(video_path), "--image", str(image_path),
+            "--v1-video", str(content_video_path), "--v1-image", str(content_image_path),
+        ],
+        0,
+    )
     run(
         "validate_delivery.py",
         [
@@ -118,6 +145,20 @@ with tempfile.TemporaryDirectory() as tmp:
     run(
         "validate_delivery.py",
         ["--phase", "content", "--video", str(video_path), "--image", str(image_path)],
+        1,
+    )
+
+    broken_video = [dict(video[0])]
+    broken_video[0].pop("summary")
+    broken_video_path = tmpdir / "broken-video.json"
+    broken_video_path.write_text(json.dumps(broken_video, ensure_ascii=False), "utf-8")
+    run(
+        "validate_delivery.py",
+        [
+            "--phase", "labeled",
+            "--video", str(broken_video_path), "--image", str(image_path),
+            "--v1-video", str(content_video_path), "--v1-image", str(content_image_path),
+        ],
         1,
     )
 
