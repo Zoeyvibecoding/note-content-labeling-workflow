@@ -50,7 +50,7 @@ description: 从小红书投放底表筛选指定品牌或产品的消耗 Top N 
 6. `V2_DELIVERED_WAITING_CONFIRMATION`：校验并发送 `v2_内容理解与打标结果待确认.xlsx`，随后立即暂停。
 7. 只有用户明确回复“打标结果确认，可以生成报告”或同等明确意思，才能进入 `REPORT_GENERATION`。
 8. 用户要求修改 v2 时，判断问题来源：内容事实错误则退回 v1；标签判断或字典规则问题则修复并对全部受影响记录重判。保留旧版本，发送新的 v2 版本并重新等待确认。
-9. `REPORT_GENERATION`：只使用用户确认的 v2 作为数据源，按 `references/report-contract.md` 生成所有人可读的报告；不得混入未确认文件、外部推测或手工改写的数据。
+9. `REPORT_GENERATION`：只使用用户确认的 v2 作为数据源。完整阅读并执行 `components/content-diagnosis-reporting/COMPONENT.md`，再按 `references/report-contract.md` 生成所有人可读的报告；不得混入未确认文件、外部推测或手工改写的数据。
 10. `VERCEL_DEPLOYMENT`：为当前新分析生成唯一 `analysis_id`，并创建独立 Vercel 项目与全新生产链接。不得复用任何其他分析的项目、域名或报告路径。
 11. 部署后必须用匿名、未登录访问验证公开可读性；不得交付 `file://`、`localhost`、`chatgpt.site`、需要 ChatGPT 登录、需要 Vercel 登录或仅当前设备可访问的地址。
 12. `REPORT_DELIVERED_WAITING_CONFIRMATION`：发送经过验证的 Vercel 公网链接和报告版本，随后立即暂停。
@@ -146,6 +146,8 @@ v2 的技术审计轨迹保留在运行目录 JSON 中，不额外塞入用户�
 用户确认 v2 后生成第三阶段交付：
 
 3. **公开复盘报告**：只基于已确认 v2 生成，保留每个版本，将生产版部署到当前任务对应的 Vercel 公网地址。报告必须无需登录即可访问，且使用非专业读者也能理解的标题、指标解释、Bench、案例和行动建议。发送链接后再次等待确认。
+
+报告的数据校验、指标计算、高优池、内容公式、真实标题回补和本地 HTML 渲染，必须使用 `components/content-diagnosis-reporting`；父 Skill 不得另写一套计算或标题逻辑。
 
 交付字段、公式和格式见 `references/delivery-contract.md`。
 报告生成、版本与 Vercel 发布要求见 `references/report-contract.md`。
