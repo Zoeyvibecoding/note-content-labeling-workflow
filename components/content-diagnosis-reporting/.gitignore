@@ -1,0 +1,4 @@
+node_modules/
+output/
+analysis-config.json
+.DS_Store

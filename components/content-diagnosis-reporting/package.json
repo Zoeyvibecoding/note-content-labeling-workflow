@@ -1,0 +1,16 @@
+{
+  "name": "claude-content-diagnosis-reporting",
+  "version": "1.1.2",
+  "private": true,
+  "type": "module",
+  "description": "Validate labeled beauty-content workbooks, calculate diagnostics, and render a local HTML report.",
+  "scripts": {
+    "validate": "node src/run.mjs --validate-only",
+    "resolve-titles": "node src/resolve-titles.mjs",
+    "build": "node src/run.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
