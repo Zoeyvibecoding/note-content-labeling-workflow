@@ -1,0 +1,18 @@
+{
+  "analysis_id": "evidens-vs-lancome-20260807",
+  "report_title": "面霜内容投放复盘报告",
+  "header_row": 3,
+  "sources": [
+    {"role": "own", "spu": "伊菲丹面霜", "file": "/absolute/path/伊菲丹面霜_最终内容理解与打标过程文件.xlsx"},
+    {"role": "competitor", "spu": "兰蔻菁纯面霜", "file": "/absolute/path/兰蔻菁纯面霜_最终内容理解与打标过程文件.xlsx"}
+  ],
+  "outlier": {"method": "iqr", "multiplier": 1.5, "scope": "source"},
+  "high_priority": {"min_better_metrics": 2, "require_all_metrics_present": true},
+  "aliases": {
+    "护肤方案": "多品组合",
+    "护肤方案/多品组合": "多品组合",
+    "护肤方案 / 多品组合": "多品组合",
+    "单品种草": "单品主导"
+  },
+  "output_dir": "./output"
+}
