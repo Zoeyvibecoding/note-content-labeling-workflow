@@ -18,7 +18,9 @@ Start with externally produced, completed labeling workbooks. Do not create, con
 5. If validation passes, run `node src/run.mjs --config <config>`. This writes deterministic metrics, evidence pools, and `ai-diagnosis-task.md`.
 6. Read every accepted evidence row used by a formula. Fill `diagnosis-authored.json` using its generated schema and the rules below.
 7. Run the same build command again. Verify `reports/vNNN/index.html` is readable without network access.
-8. Return the local HTML and validation report. Preserve prior report versions.
+8. Before handoff, run `../../scripts/embed_dictionary.py reports/vNNN` and add a visible report entry to `dictionary/index.html`. Do not rewrite or restyle the manifest-selected snapshot.
+9. Run `../../scripts/validate_embedded_dictionary.py reports/vNNN`. Stop if it fails.
+10. Return the local HTML and validation report. Preserve prior report versions.
 
 ## Non-negotiable calculations
 
@@ -76,6 +78,7 @@ Every chart must label categories and values directly. Explain CTR, CPTI, CPUV, 
 - The subcategory-detail conclusion must cover three levels in order: overall Beauty Vertical vs Breakout comparison, internal performance differences among the four Beauty Vertical subcategories, and internal performance differences among the four Breakout subcategories. Name the strongest and weakest relevant metrics with values; never describe only one major category.
 - Render exactly one section/page divider between adjacent report sections. Before delivery, reject consecutive divider elements and avoid combining an explicit divider with CSS `break-before`/`page-break-before` on the same boundary.
 - Formula sample cards do not display covers by default.
+- Every report includes the parent workflow's manifest-locked label dictionary snapshot. The current snapshot preserves a strict hierarchy: the three input/output notes are one compact supplementary strip, while the numbered classification framework is the primary section. A public dictionary URL is a reference only and never replaces the embedded files.
 
 ## Local-only output
 

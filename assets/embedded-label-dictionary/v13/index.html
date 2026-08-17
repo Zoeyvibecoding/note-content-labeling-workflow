@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>美护内容打标字典</title>
+  <meta name="description" content="美垂与破圈内容的九类单标签打标字典">
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.9.2/dist/paper.min.css">
+  <style>
+    @font-face{font-family:"胡晓波青年宋细-网页";src:local("HuXiaoBo-qingniansong Light"),local("HuXiaoBo-qingniansong-Light"),local("HuXiaoBo-qingniansongLight"),url("./fonts/huxiaobo-qingniansong-light.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+    @font-face{font-family:"胡晓波青年宋粗-网页";src:local("HuXiaoBo-qingniansong Bold"),local("HuXiaoBo-qingniansong-Bold"),local("HuXiaoBo-qingniansongBold"),url("./fonts/huxiaobo-qingniansong-bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+    *{box-sizing:border-box} html{font-size:13.5px} body,body *{font-family:"胡晓波青年宋细-网页","Apple Color Emoji",sans-serif!important}body{margin:0;line-height:1.5}
+    h1,h2,h3,h4,h5,h6,strong,b,button,summary{font-family:"胡晓波青年宋粗-网页","胡晓波青年宋细-网页","Apple Color Emoji",sans-serif!important}
+    h1{font-size:1.8rem}h2{font-size:1.5rem}h3{font-size:1.22rem}h4{font-size:1.05rem}p,li,button,input,select,pre,code{font-size:1rem}
+    .shell{max-width:1180px;margin:auto;padding:28px}.topbar{padding:12px 0 20px}
+    .brand{display:flex;align-items:center;justify-content:space-between;gap:18px}.brand h1{margin:0}.brand small{display:block;margin-top:4px}
+    .nav{display:flex;gap:8px;overflow:auto;padding:10px 2px 4px}.nav button{white-space:nowrap;margin:0}
+    .page{display:none;padding:26px 0}.page.active{display:block}.hero{padding:28px;margin-bottom:24px}.kicker{font-weight:700}.hero h2{margin:.35em 0;text-wrap:balance}.lede{max-width:none;margin-bottom:0;text-wrap:pretty}.guide-logic{margin-top:12px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .card{margin:0}.card h3{margin:.25rem 0 .7rem}.good{color:#236b4d}.bad{color:#a52d40}.edge{color:#86610b}.card-body{height:100%}
+    .taxonomy{padding:22px;margin:0 0 24px}.taxonomy-title{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:16px}.taxonomy-title h3{margin:0}.taxonomy-total{font-weight:700;background:#e8f1f2;padding:.35rem .7rem}.family-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.family{padding:18px}.family h3{margin:0 0 5px}.family-question{margin:0 0 14px;color:#555}.type-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.type-pill{display:block;padding:10px 12px;background:#f4f2ef;font-weight:700}.type-pill small{display:block;font-weight:400;color:#555;margin-top:2px}
+    .map{padding:24px;background:#e9efee}.map-head{display:flex;justify-content:space-between;gap:24px;align-items:start}.map-head p{max-width:820px;margin:.5rem 0}.key{margin:12px 0 0;padding:10px 12px;background:#e8f1f2}.flowchart{max-width:1040px;margin:22px auto}.flow-node{padding:16px 18px;text-align:center;margin:0 auto;max-width:760px;background:#fff}.flow-node h4,.flow-branch h4{margin:0 0 7px}.flow-down{text-align:center;font-size:2.5rem;line-height:1.1;font-weight:700;margin:7px 0}.flow-choice{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px auto;max-width:940px}.flow-answer{padding:14px 16px;text-align:left}.answer-yes{background:#e8f1f2}.answer-no{background:#f4f2ef}.flow-result{display:block;margin-top:6px;font-weight:700}.branch-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:18px}.flow-branch{padding:18px;background:#fff}.branch-labels{display:grid;gap:11px;margin-top:14px}.branch-check{padding:12px 14px;background:#f4f2ef}.branch-check b{display:block;margin-bottom:5px}.tree-example{display:block;margin-top:7px;color:#555;font-size:.92rem;line-height:1.55}.branch-arrow{text-align:center;font-size:1.55rem;font-weight:700;line-height:1}.order-note{padding:16px;margin-top:18px;background:#fff}.order-note ul{margin-bottom:0}.validation-guide{padding:18px;background:#f4f2ef}.validation-guide h3{margin-top:0}.validation-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.validation-step{padding:12px;background:#fff}.validation-step b{display:block;margin-bottom:4px}.step-title{font-weight:700}.logic{color:#555}.interactive{padding:20px;margin-top:22px;background:#fff}.path{min-height:30px;margin:0 0 14px;color:#555;font-weight:700}
+    details{margin-top:16px;padding-top:10px}summary{cursor:pointer;font-weight:700}.case-list{padding-left:1.25rem}.case-list li{margin:.65rem 0}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}.toolbar input,.toolbar select{margin:0;min-width:220px}.dict-card.hidden{display:none}.principle{background:#f4f2ef}.family-guide{padding:18px;margin:18px 0}.family-guide h3{margin-top:0}.family-sequence{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.sequence-item{padding:11px;background:#f4f2ef}.sequence-item b{display:block}.type-badge{display:inline-block;background:#e8f1f2;padding:.25rem .55rem;margin-bottom:8px;font-weight:700}.definition-title{margin:10px 0 4px}.validation-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.validation-box{padding:12px;background:#f4f2ef}.validation-box b{display:block;margin-bottom:5px}.validation-box.verify{background:#e8f1f2}
+    .ai-box{padding:18px;white-space:pre-wrap;line-height:1.6;max-height:520px;overflow:auto}.ai-box code{color:inherit;background:none}
+    .question{display:none}.question.active{display:block}.question p{margin:.2rem 0 .8rem}.choice{display:block;width:100%;text-align:left;margin:9px 0}.result{padding:16px;background:#eef5f8}
+    .footer{padding:22px 0;color:#666}.muted{color:#666}.notice,.principle{background:#f4f2ef;padding:12px 16px}
+    @media(max-width:760px){html{font-size:13px}.shell{padding:14px}.brand{align-items:flex-start;flex-direction:column}.span-4,.span-6,.span-8{grid-column:span 12}.family-grid,.flow-choice,.branch-grid,.validation-pair,.validation-steps{grid-template-columns:1fr}.type-list{grid-template-columns:1fr 1fr}.family-sequence{grid-template-columns:1fr 1fr}.hero{padding:20px}.map,.taxonomy{padding:16px}.map-head,.taxonomy-title{display:block}.taxonomy-total{display:inline-block;margin-top:10px}}
+  </style>
+  <link rel="stylesheet" href="./report-theme.css">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div><h1>美护内容打标字典</h1><small>规则版本 v13 · 九类 · 单主标签 · 证据优先</small></div></div>
+    <nav class="nav" aria-label="页面导航">
+      <button class="active btn-primary" data-page="guide">使用说明</button><button data-page="breakout">破圈内容</button><button data-page="vertical">美垂内容</button><button data-page="forai">AI 打标协议</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="guide" class="page active">
+      <div class="paper border border-1 hero"><span class="kicker">📖 美护内容打标 · 使用说明</span><h2>小红书笔记的统一打标依据</h2><p class="lede">这是一套面向小红书商业化美护客户的小红书笔记打标依据。完成打标后，可进一步产出内容供给盘点、内容结构诊断、案例对比与策略分析，帮助客户看清现有内容在讲什么、结构是否匹配目标，以及后续需要补充什么类型。</p><p class="lede guide-logic"><b>打标逻辑：</b>完整读取笔记内容 → 判断产品主线或生活主线 → 进入对应类型 → 完成正向判断、负向验证与相邻类型排除 → 输出 1 个主标签。</p></div>
+      <div class="grid">
+        <aside class="span-12 context-strip" aria-label="使用范围与输入输出说明"><div class="context-item"><span class="context-label">适用对象</span><p>含护肤、美妆、护发、身体护理产品或议题的图文/视频笔记。</p></div><div class="context-item"><span class="context-label">最终输出</span><p><b>大类：</b>美垂或破圈；<b>主标签：</b>九个标签中单选一个。</p></div><div class="context-item context-wide"><span class="context-label">内容依据</span><p>图文：全部图片与 OCR → 正文 → 标题 → Tag；视频补充完整画面、ASR、关键转场、产品集中段及结尾 CTA。</p></div></aside>
+        <section class="paper border border-2 taxonomy span-12" aria-label="打标类型"><div class="section-heading"><span class="section-index">01</span><div><span class="section-eyebrow">核心分类框架</span><h3>先判断内容属于哪一种打标类型</h3><p>这是正式打标的第一层决策，不是背景说明。</p></div><span class="taxonomy-total">2 个大类 · 9 个小类 · 单选 1 个</span></div><div class="family-grid"><article class="paper border border-3 family"><h3>🎯 美垂：产品信息是主线</h3><p class="family-question">内容主要解决“怎么买、怎么选、怎么搭、产品或美护问题怎么样”。</p><div class="type-list"><span class="type-pill">💰 促销机制<small>怎么买最划算</small></span><span class="type-pill">🧭 系列选型<small>同品牌同品类选哪款</small></span><span class="type-pill">🆚 同类横测<small>跨品牌同类产品怎么选</small></span><span class="type-pill">🧩 多品组合<small>不同产品怎么搭</small></span><span class="type-pill">🧴 单品主导<small>一个产品或问题讲透</small></span></div></article><article class="paper border border-4 family"><h3>🌈 破圈：生活内容是主线</h3><p class="family-question">内容主要表达“这个人相信什么、处于什么阶段、完成什么或怎样生活”。</p><div class="type-list"><span class="type-pill">💬 观点价值<small>表达完整主张</small></span><span class="type-pill">👤 身份阶段<small>身份改变内容结构</small></span><span class="type-pill">🗺️ 场景任务<small>事件或任务推进内容</small></span><span class="type-pill">☕ 日常生活<small>普通生活状态与陪伴</small></span></div></article></div></section>
+        <section class="paper border border-3 validation-guide span-12"><h3>✅ 正向判断与负向验证</h3><p>每个小类都使用同一套验证闭环，但验证内容不同：</p><div class="validation-steps"><div class="validation-step"><b>正向判断</b>先确认该类型的定义和必要结构证据是否成立。</div><div class="validation-step"><b>负向验证</b>删除该类型的核心要素后，原承诺或结构应明显受损；否则不能判入。</div><div class="validation-step"><b>相邻类型排除</b>确认更高优先级或最相近的类型不成立，再输出最终标签。</div></div><p class="logic">负向示例不能单独证明一个标签，它的作用是防止“看见关键词就贴标签”。</p></section>
+        <article class="paper border border-5 map span-12">
+          <div class="map-head"><div><h3>🧭 打标决策树</h3><p>按下面顺序完成一次完整判断。每遇到一个问题，只走“是”或“否”的一条路径；得到候选标签后，再用该类型的负向验证复核。</p></div></div>
+          <div class="flowchart">
+            <div class="paper border border-1 flow-node"><h4>🔍 读取完整内容，建立证据</h4><p>图文先读全部图片（含封面、内页及图片中的 OCR / 花字），再读正文、标题和 Tag；视频补充读取完整画面与 ASR、关键转场、产品段和结尾 CTA。先找内容结构，不用“vlog、35+、出差、开箱”等词直接贴标签。</p></div>
+            <div class="flow-down" aria-hidden="true">↓</div>
+            <div class="paper border border-2 flow-node"><h4>这篇笔记的核心，是不是在告诉你“怎么买更划算”？</h4><p>优惠价格、赠品、购买时间或渠道贯穿全文；删掉这些信息，笔记的主要价值就消失。</p><span class="tree-example">例如：完整讲解“双十一直播间到手价、满减规则、赠品档位和下单时间”。</span></div>
+            <div class="flow-choice"><div class="paper border border-3 flow-answer answer-yes"><b>是</b>：优惠与购买方式贯穿内容。<span class="flow-result">→ 美垂 · 促销机制（停止）</span></div><div class="paper border border-4 flow-answer answer-no"><b>否</b>：只顺带提及购买信息，或删后仍有完整价值。<span class="flow-result">↓ 继续判断主线</span></div></div>
+            <div class="flow-down" aria-hidden="true">↓</div>
+            <div class="paper border border-5 flow-node"><h4>产品信息是否不可替代，并且组织了全文？</h4><p>同时检查两点：删除产品、功效、成分、步骤或产品建议后，标题承诺无法完成；正文按产品、问题、步骤、效果或比较组织。</p></div>
+            <div class="flow-choice"><div class="paper border border-6 flow-answer answer-yes"><b>是</b>：去产品后只剩零散背景。<span class="flow-result">↓ 进入美垂分支</span></div><div class="paper border border-1 flow-answer answer-no"><b>否</b>：去产品后人物、观点、任务或生活仍完整。<span class="flow-result">↓ 进入破圈分支</span></div></div>
+            <div class="flow-down" aria-hidden="true">↓</div>
+            <div class="branch-grid">
+              <section class="paper border border-2 flow-branch"><h4>🎯 美垂分支：产品与系列版本分开判断</h4><p class="logic">促销已优先排除。先检查同品牌、同品类下的当前可选对象是否形成明确选款任务，再判断跨品牌横测、组合或单品。</p><div class="branch-labels"><div class="branch-check"><b>同一品牌、同一品类下是否至少两个当前可选对象被实质讲解，并给出“谁适合哪款”的明确映射？</b>是 → 🧭 系列选型<span class="tree-example">例如轻盈版适合油皮/夏季，滋润版适合干皮/秋冬；只回顾新旧代升级不成立。</span></div><div class="branch-arrow">↓ 否</div><div class="branch-check"><b>是否至少两件不同 canonical_product_id 的同类产品进入比较或选择任务？</b>是 → 🆚 同类横测<span class="tree-example">仅适用于跨品牌选择；同品牌的同系列版本或跨系列产品优先进入系列选型。</span></div><div class="branch-arrow">↓ 否</div><div class="branch-check"><b>多个产品是否各自承担步骤或功能角色，并共同完成一个美护目标？</b>是 → 🧩 多品组合</div><div class="branch-arrow">↓ 否</div><div class="branch-check"><b>是否只有一个产品或一条美护问题解决线真正组织全文？</b>是 → 🧴 单品主导</div></div></section>
+              <section class="paper border border-3 flow-branch"><h4>🌈 破圈分支：从“强结构”查到“兜底”</h4><p class="logic">顺序用于解决重叠；前一类必须满足完整结构证据，不是看见关键词就抢标签。</p><div class="branch-labels"><div class="branch-check"><b>作者是否提出一个明确主张，并用经历、理由或例子解释“为什么”？</b>是 → 💬 观点价值<span class="tree-example">例如：“长期主义护肤不是买得贵，而是持续做对三件小事”，随后用自身经历和三个理由展开论证。</span></div><div class="branch-arrow">↓ 否</div><div class="branch-check"><b>内容是否围绕某种身份或人生阶段带来的问题、变化和选择？</b>是 → 👤 身份阶段<span class="tree-example">例如：新手妈妈完整讲述产后睡眠不足、皮肤变化，以及因此调整护肤方式的过程。</span></div><div class="branch-arrow">↓ 否</div><div class="branch-check"><b>内容是否由一次明确的地点、事件或任务推动？</b>是 → 🗺️ 场景任务<span class="tree-example">例如：记录“三天两夜海岛婚礼伴娘任务”，从出发、带妆到补妆都围绕这次事件展开。</span></div><div class="branch-arrow">↓ 否</div><div class="branch-check"><b>内容是否只是记录普通一天或一段生活状态，没有强观点、强身份或明确任务？</b>是 → ☕ 日常生活<span class="tree-example">例如：记录普通周日的做饭、收拾房间、遛狗和睡前护肤，重点是生活陪伴感。</span></div></div></section>
+            </div>
+            <aside class="paper border border-4 order-note"><h4>⚖️ 为什么按这个顺序？</h4><ul><li><b>美垂顺序合理：</b>促销目的最容易覆盖其他产品形态，因此最先排除；横测与组合都要求多个产品，但“竞争比较”比“协作搭配”更明确；单品主导承接其余美垂内容，是兜底。</li><li><b>破圈顺序也合理：</b>完整观点是最强的篇章组织方式；身份比一次场景更稳定、更能改变选择；场景任务比普通日常更具体；日常生活只在前三类均不成立时使用。</li><li><b>顺序不是重要性排名：</b>它只是冲突消解规则。若前一类只有标题词或一句口号，不算命中，必须继续往下走。</li></ul></aside>
+          </div>
+          <div class="paper border border-1 interactive"><h3>🖱️ 现在沿这张图做一次判断</h3><div id="decisionPath" class="path">起点：检查促销</div><div id="quiz"><div class="question active" data-q="promo"><p><b>促销检查：</b>删除价格、优惠、赠品、直播和购买方式后，主要价值会消失吗？</p><button class="choice" data-result="促销机制" data-path="促销是最终目的">会，购买机制就是主承诺 → 促销机制</button><button class="choice" data-next="gate" data-path="促销不是最终目的">不会，删除后仍有完整内容 → 判断内容灵魂</button></div><div class="question" data-q="gate"><p><b>内容闸门：</b>是否同时满足“美护不可替代”与“美护逻辑组织全文”？</p><button class="choice" data-next="product-count" data-path="产品主导 → 美垂">是，去掉产品内容就不成立 → 美垂</button><button class="choice" data-next="viewpoint" data-path="生活主导 → 破圈">否，去掉产品仍有完整生活主线 → 破圈</button></div><div class="question" data-q="product-count"><p><b>产品实例核验：</b>是否至少两件独立产品在本篇实际出镜、使用或被实质讲解，并各有证据？</p><button class="choice" data-next="vertical-type" data-path="至少两件实际产品">是，逐件记录名称、出镜/使用证据与内容角色</button><button class="choice" data-result="单品主导" data-path="仅一件实际产品">否，其他只是版本、系列、历史或口头提及 → 单品主导</button></div><div class="question" data-q="vertical-type"><p><b>多产品关系：</b>实际参与内容的产品之间是什么关系？</p><button class="choice" data-result="同类横测" data-path="比较/选择关系">同类产品处于可替代或二选一关系，并给出差异/选择结论 → 同类横测</button><button class="choice" data-result="护肤方案 / 多品组合" data-path="组合协作关系">多个实际产品按步骤或功能协作完成共同目标 → 多品组合</button><button class="choice" data-result="单品主导" data-path="只有一个产品真正主导">虽有其他产品露出，但只有一个获得实质讲解 → 单品主导</button></div><div class="question" data-q="viewpoint"><p><b>破圈分支：</b>是否有一句可复述的观点，并有至少两段理由或经历支撑？</p><button class="choice" data-result="观点价值" data-path="明确观点组织全文">有，全文在回答“我相信什么/为什么” → 观点价值</button><button class="choice" data-next="identity" data-path="没有完整观点论证">没有，只是口号或结尾感悟 → 检查身份</button></div><div class="question" data-q="identity"><p><b>身份测试：</b>把年龄、职业、家庭角色或人生阶段换成普通人，内容会明显改变吗？</p><button class="choice" data-result="身份阶段" data-path="身份不可替换">会，身份改变了问题和选择 → 身份阶段</button><button class="choice" data-next="scene" data-path="身份可替换">不会，身份只是标题装饰 → 检查场景任务</button></div><div class="question" data-q="scene"><p><b>场景测试：</b>去掉旅行、出差、购物、活动、地点或具体任务，结构会坍塌吗？</p><button class="choice" data-result="场景任务" data-path="场景/任务推动内容">会，任务决定了内容顺序 → 场景任务</button><button class="choice" data-result="日常生活" data-path="普通日常陪伴">不会，也没有强观点或强身份 → 日常生活</button></div></div><div id="quizResult" hidden class="result"></div><button id="resetQuiz" hidden>从头重新判断</button></div>
+        </article>
+        <article class="card border border-5 span-6"><div class="card-body"><h3>⚔️ 证据冲突时，看谁优先</h3><p>完整正文/视频的实际结构 ＞ 产品集中讲解与故事主线 ＞ 开头 10 秒与封面承诺 ＞ 标题关键词 ＞ 孤立词语。</p></div></article>
+        <article class="card border border-6 span-6"><div class="card-body"><h3>🧐 不能确定时，不要硬猜</h3><p>证据不足时不强行终判，必须同时输出：</p><ol><li>文本候选标签。</li><li>候选一和候选二。</li><li>不确定原因。</li><li>需要补看的媒体证据。</li><li>置信度：高 / 中 / 低。</li><li><code>needs_media_review=true</code>。</li></ol></div></article>
+        <article class="card border border-1 span-6"><div class="card-body"><h3>🖼️ 图文笔记完整读取清单</h3><ol><li>全部图片及图片文字：封面、所有内页、OCR、花字和图中标注。</li><li>正文。</li><li>标题。</li><li>Tag / 话题标签。</li></ol><p><b>重点提取：</b>图片叙事与产品露出、正文主要篇幅、标题承诺、产品数量与品类、独立故事线、产品所扮演的角色、Tag 提供的语境及结尾行动指令。</p></div></article>
+        <article class="card border border-2 span-6"><div class="card-body"><h3>🎬 视频笔记完整读取清单</h3><ol><li>标题、正文、封面及封面文字。</li><li>完整 ASR 口播与视频花字 / OCR。</li><li>开头约 10 秒的内容承诺。</li><li>重要转场和章节标题。</li><li>产品首次出现、集中讲解与使用演示段。</li><li>结尾总结和 CTA。</li><li>关键帧中的人物、地点、产品和活动。</li></ol><p><b>不能只读植入片段：</b>必须先理解完整视频，才能判断产品是主角还是嵌入生活故事。</p></div></article>
+        <article class="card border border-3 span-12"><div class="card-body"><h3>🚫 不参与打标的数据</h3><p>消耗、CTR、CPTI、CPUV、点赞、收藏、评论、后链路转化结果和达人历史投放表现都不能用于内容分类。它们只能在标签冻结后做效果分析。</p><h3>🔎 必须触发媒体复核的情况</h3><p>标题有身份词但正文很短；vlog、旅居、出差、GRWM；年度爱用、开箱、购物清单；长期主义或人生感悟；无法确认产品是否都属于美护领域；无法确认多产品是同类横测还是跨品类方案。</p></div></article>
+      </div>
+    </section>
+
+    <section id="breakout" class="page"><div class="paper border border-2 hero"><span class="kicker">🌈 破圈内容 · 生活主线</span><h2>这是一个包含 4 种类型的“生活主线”大类。</h2><p class="lede">产品拿掉以后，人物、观点、任务或生活仍能独立成立，才进入破圈。进入后必须在观点价值、身份阶段、场景任务、日常生活中四选一，不能把“破圈”本身当作最终标签。</p></div><div class="paper border border-3 notice"><b>💡 一句话判大类：</b>如果读完主要记住的是“这个人相信什么、处于什么阶段、完成了什么或怎样生活”，而不是产品功效、用法和购买建议，就进入破圈。</div><section class="paper border border-4 family-guide"><h3>四类怎么分：按顺序命中即停止</h3><div class="family-sequence"><div class="sequence-item"><b>💬 观点价值</b>有完整主张与论证</div><div class="sequence-item"><b>👤 身份阶段</b>身份改变问题与选择</div><div class="sequence-item"><b>🗺️ 场景任务</b>事件或任务推动全文</div><div class="sequence-item"><b>☕ 日常生活</b>前三类均不成立的生活陪伴</div></div></section><div class="toolbar"><input class="dict-search" data-scope="breakoutCards" placeholder="搜索定义、案例或边缘规则"><select class="dict-filter" data-scope="breakoutCards"><option value="all">全部标签</option><option>观点价值</option><option>身份阶段</option><option>场景任务</option><option>日常生活</option></select><span class="muted" id="breakoutCount">4 个标签</span></div><div id="breakoutCards" class="grid"></div></section>
+
+    <section id="vertical" class="page"><div class="paper border border-4 hero"><span class="kicker">🎯 美垂内容 · 产品主线</span><h2>这是一个包含 5 种类型的“产品主线”大类。</h2><p class="lede">删除产品、功效、成分、步骤或购买建议后，标题承诺无法完成，并且正文由产品逻辑组织，才进入美垂。进入后依次判断促销、同品牌同品类选型、跨品牌横测、多品组合与单品主导。</p></div><div class="paper border border-5 notice"><b>💡 产品与版本分开计数：</b>独立产品按 canonical_product_id 去重；同一系列的当前可选版本按 variant_id 去重。只有被实质讲解并进入明确选款映射的版本，才能触发系列选型。</div><section class="paper border border-6 family-guide"><h3>五类怎么分：按顺序命中即停止</h3><div class="family-sequence"><div class="sequence-item"><b>💰 促销机制</b>购买利益是最终目的</div><div class="sequence-item"><b>🧭 系列选型</b>同品牌同品类回答谁适合哪款</div><div class="sequence-item"><b>🆚 同类横测</b>跨品牌同类产品进入比较/选择任务</div><div class="sequence-item"><b>🧩 多品组合</b>多件实际产品协作成方案</div><div class="sequence-item"><b>🧴 单品主导</b>仅一件实际产品或单一美护议题</div></div></section><div class="toolbar"><input class="dict-search" data-scope="verticalCards" placeholder="搜索定义、案例或边缘规则"><select class="dict-filter" data-scope="verticalCards"><option value="all">全部标签</option><option>促销机制</option><option>系列选型</option><option>同类横测</option><option>护肤方案 / 多品组合</option><option>单品主导</option></select><span class="muted" id="verticalCount">5 个标签</span></div><div id="verticalCards" class="grid"></div></section>
+
+    <section id="forai" class="page"><div class="paper border border-6 hero"><span class="kicker">🤖 AI 打标协议</span><h2>给 AI 的打标操作协议。</h2><p class="lede">这不是关键词分类，而是“先重建内容结构，再做正向命中、反向验证与近邻排除，最后输出单一标签”的证据推理任务。</p></div><div class="grid"><article class="card border border-1 span-8"><div class="card-body"><h3>📋 可直接复制给机器人</h3><div id="aiPrompt" class="paper border border-2 ai-box"></div><button id="copyPrompt">复制完整协议</button><span id="copyState" class="muted" aria-live="polite"></span></div></article><aside class="card border border-3 span-4"><div class="card-body"><h3>🧠 机器人务必记住</h3><ol><li>先完整理解，再分类。</li><li>标签结构是两大类、九小类、每篇单选一个。</li><li>每个候选标签都要经过“正向命中 + 反向验证”。</li><li>必须最先检查促销机制。</li><li>标题词不是标签证据。</li><li>多产品不等于横测或组合。</li><li>破圈顺序固定：观点、身份、场景、日常。</li><li>证据不足时不强行终判。</li></ol><h3>标准输出</h3><pre>{
+  "label": "单品主导",
+  "confidence": "high",
+  "evidence": ["…"],
+  "counterfactual": "…",
+  "alternative": null,
+  "needs_media_review": false
+}</pre></div></aside></div></section>
+  </main>
+  <footer class="footer">基于《笔记内容打标》整理 · 产品内容域闸门</footer>
+</div>
+<script>
+const labels={
+ breakouts:[
+ {id:'观点价值',name:'观点价值',def:'围绕一个明确、可复述的生活命题或价值判断展开；人物经历、理由或案例用于支撑观点，产品只是实践方式或辅助例证。',core:'一句完整命题 + 至少两个理由、经历或段落支撑 + 去掉产品后观点仍成立。',pos:['“过了30岁，我不再用忙碌证明自己的价值。”用工作经历和具体选择展开。','“真正的抗老不是怕老，而是保持生活的选择权。”产品仅是日常实践。','“成为妈妈后，我仍需要一段不属于任何家庭角色的时间。”'],neg:['“女人要爱自己，所以要买这款面霜。”口号后全讲产品 → 单品主导。','“长期主义护肤。”全文是精华功效与使用体验 → 单品主导。'],edge:['只有“悦己、独立、爱自己”一句口号不够。','与身份冲突时：回答“我相信什么/为什么”判观点价值；身份带来的问题与选择为主判身份阶段。']},
+ {id:'身份阶段',name:'身份阶段',def:'年龄、职业、家庭角色、亲密关系或人生阶段真正改变了问题、选择标准、生活方式或观察视角。',core:'将人物替换成另一年龄、职业或家庭角色，内容结构、问题或选择会明显改变。',pos:['“35岁女律师下班后的恢复时间。”职业压力与年龄贯穿。','“产后重新找回自己的三个习惯。”产后改变问题和时间安排。','“结婚十年，我们仍保留各自独处空间。”关系互动是主体。'],neg:['“30+必买面霜。”年龄只在标题，正文讲产品 → 美垂。','“孕期 routine。”若主体是安全成分与推荐 → 单品主导或多品组合。','“某明星同款。”明星只是背书。'],edge:['标题出现“社畜、独居、空乘、宝妈、35+”不自动命中。','年龄+产品功效归美垂；年龄+人生感受/选择改变归身份阶段。']},
+ {id:'场景任务',name:'场景任务',def:'内容由明确地点、事件或任务推动；场景变化决定结构，产品是完成任务、应对环境或自我管理的工具。',core:'去掉地点、事件或任务后，笔记无法按原结构成立。',pos:['“去海岛七天，我的行李箱里带了什么。”','“北京律师出差日：早班机、客户会议和酒店夜晚。”','“第一次给婆婆准备生日礼物。”任务是主线。'],neg:['“日本 SPA 级效果。”是效果类比，不是场景。','“出差必备精华。”若全文讲功效和用法 → 单品主导。','普通 vlog 顺带通勤，通勤没推动内容。'],edge:['场景仅作拍摄背景时不判场景任务。','身份决定问题判身份阶段；一次任务决定结构判场景任务。','跨美护、包袋、食品等围绕真实任务的清单可判场景任务。']},
+ {id:'日常生活',name:'日常生活',def:'无强观点、强身份或明确任务；普通生活过程、个人状态和陪伴感组织内容。',core:'价值来自生活氛围、真实感和日常陪伴，是破圈兜底类。',pos:['“周末宅家，做饭、收拾房间和慢慢护肤。”','“最近睡前留给自己的半小时。”','“没有安排的一天，和猫在家晒太阳。”'],neg:['“三亚度假 routine。”由度假行程推动 → 场景任务。','“Night routine”逐步讲成分和作用 → 单品主导或多品组合。','“30+ Night routine。”年龄词本身不构成身份阶段。'],edge:['不能因出现 vlog、routine、居家、下班就自动命中。','日常画面配产品旁白时，要读完整旁白；若功效成分为主归美垂。']}
+ ],
+ verticals:[
+ {id:'促销机制',name:'促销机制',def:'核心承诺是怎么买、何时买、在哪里买、买多少、获得什么优惠；功效主要支持购买理由。',core:'去掉价格、优惠、赠品、直播和购买方式后，核心承诺明显消失；必要证据至少命中两项。',pos:['“618这款面霜怎么买最划算？单瓶、套装和直播间赠品算给你看。”','“双11贵妇面霜囤货攻略，最低到手价整理。”','“专柜、免税店和直播间价格对比，哪个更划算？”'],neg:['产品功效测评结尾提一句价格 → 单品主导。','五款面霜按功效、质地、肤质横测，价格只是指标 → 同类横测。','早C晚A搭配结尾附购买链接 → 多品组合。'],edge:['只在结尾说“直播间可以买”不构成促销机制。','“性价比高”只是评价词。','多款产品都讲优惠但无共同产品评价标准，仍判促销机制。']},
+ {id:'系列选型',name:'系列选型',def:'同一品牌、同一品类下的两个以上当前可选对象，按肤质、季节、质地、功效或场景形成明确选款建议。',core:'至少两个版本均被实质讲解，并给出“谁适合哪款”的可回溯映射。',pos:['“同系列轻盈版适合油皮和夏季，滋润版适合干皮和秋冬。”'],neg:['只回顾初代到二代的技术升级并推荐二代 → 单品主导。','跨品牌面霜选择 → 同类横测。'],edge:['版本可共享 canonical_product_id，但必须有不同 variant_id。','价格、赠品和渠道主导时仍判促销机制。']},
+ {id:'同类横测',name:'同类横测',def:'至少两件独立同类产品在本篇实际出镜、使用或被实质讲解，并进入比较或选择任务；产品处于可替代/二选一关系，内容输出差异、适用对象或选择结论。',core:'同时具备：两件以上实际参与内容且各有证据的同类产品；比较/选择任务；可回溯的差异或选择结论。版本名、系列名、历史使用和口头带过不计第二件产品。',pos:['“五款贵妇面霜：滋润度、肤感和抗老表现对比。”','“伊菲丹更润，另一款更轻薄，分别适合秋冬和夏天。”','“两款修护面霜都实际试用，并回答干皮和油皮分别怎么选。”'],neg:['只展示一款，口播说“以前用过轻盈版” → 单品主导。','早晚护肤：两件实际产品各自承担不同步骤 → 多品组合。','主讲一款面霜，另一款只在合照、背景或系列名中出现 → 单品主导。'],edge:['不要求统一评价表、明确胜负或拉踩，但必须存在比较/选择任务。','分别描述只有在帮助用户理解差异和怎么选时才成立；若用于解释协同分工则判组合。','同产品不同版本只有在本篇都实际参与并进入选择框架时才可判横测。']},
+ {id:'护肤方案 / 多品组合',name:'护肤方案 / 多品组合',def:'至少两件独立产品在本篇实际出镜、使用或被实质讲解，并按顺序、功能分工或共同目标组成方案；重点是如何一起用、各自承担什么角色。',core:'先逐件证明产品实例，再证明组合关系。每件产品都必须在本篇实际参与方案；版本/系列/历史提及不能凑数。',pos:['“我的夜间修护 routine：精华、面霜和面膜怎么搭配。”','“两款实际产品按白天和夜间分工，共同完成全天护理。”','“换季敏感期的三步修护方案。”'],neg:['只展示一款，另一版本仅被提到 → 单品主导。','五款修护面霜用于回答谁更适合 → 同类横测。','主讲精华，搭配面霜仅一笔带过 → 单品主导。'],edge:['出现多个名称不等于出现多个产品；必须有每件产品的实际出镜/使用/讲解证据。','同类产品若协作完成步骤或周期可判组合；若可替代并帮助选择则判横测。','跨美护、服装、食品、家居的生活清单通常判场景任务。']},
+ {id:'单品主导',name:'单品主导',def:'本篇只有一件实际产品获得主体展示和实质讲解，或由一个核心美护问题、一条产品—问题解决线组织；不满足促销、横测或组合时归入此类。',core:'产品计数以实际内容证据为准，不以版本词数量为准。曾用版本、同系列版本、可选版本、包装同框、背景露出和口头带过均不自动增加产品数。',pos:['“伊菲丹面霜使用一个月后的真实感受。”','本篇只展示一款面霜，回顾“以前用过轻盈版”后继续讲当前产品。','“35岁以后，我为什么换成这款抗老面霜？”'],neg:['两件实际同类产品进入比较/选择任务 → 同类横测。','两件以上实际产品按步骤和功能组成完整方案 → 多品组合。','产品只是旅行、职场或生活故事里的植入 → 破圈。'],edge:['先记录每件产品名称、实际出镜/使用/讲解证据和内容角色；证据不足不得计数。','一个主产品加另一同类产品的无评价露出，仍判单品主导。','没有产品但整篇解决明确美护问题，也可判单品主导。']}
+ ]};
+const labelIcons={'促销机制':'💰','系列选型':'🧭','同类横测':'🆚','护肤方案 / 多品组合':'🧩','单品主导':'🧴','观点价值':'💬','身份阶段':'👤','场景任务':'🗺️','日常生活':'☕'};
+const labelQuestions={
+ '促销机制':'这篇内容最终是在解释产品，还是在解释怎么买？',
+ '同类横测':'是否至少有两件实际参与内容的同类独立产品，并进入比较/选择任务？',
+ '护肤方案 / 多品组合':'是否至少有两件实际参与内容的独立产品，各自承担角色并共同完成目标？',
+ '单品主导':'是否由一个产品、一个美护问题或一条解决线组织全文？',
+ '观点价值':'能否复述出一句主张，并找到至少两段支撑？',
+ '身份阶段':'换一个年龄、职业、家庭角色或阶段，问题与选择会变吗？',
+ '场景任务':'去掉这次地点、事件或任务，原来的内容顺序还成立吗？',
+ '日常生活':'前三种强结构都不存在，价值是否来自普通生活状态与陪伴？'
+};
+const labelCounterfactual={
+ '促销机制':'删除价格、优惠、赠品、直播间、购买时间和渠道。若主要承诺仍可由产品功效、体验或比较完整完成，就不能判促销机制。',
+ '同类横测':'删除产品之间的比较、评价、差异说明或分别描述。若内容因此退化为单一产品介绍或无组织罗列，说明横测关系成立；若删除后核心内容不变，且另一产品只是露出，则不能判同类横测。',
+ '护肤方案 / 多品组合':'删除产品间的步骤、功能分工或共同目标。若各产品互不协作，或只有一个产品真正主导，就不能判多品组合。',
+ '单品主导':'删除核心产品、核心美护问题和解决线。若人物、观点、任务或生活故事仍能独立完成原承诺，应回到破圈判断。',
+ '观点价值':'删除可复述的主张。若剩下内容仍只是一个身份经历、一次任务或普通日常，观点没有真正组织全文，就不能判观点价值。',
+ '身份阶段':'把年龄、职业、家庭角色或人生阶段替换成普通人。若问题、选择和内容结构基本不变，身份只是包装，应继续检查场景。',
+ '场景任务':'删除地点、事件和具体任务。若内容仍是一段完整的普通生活状态，场景只是背景，应判日常生活。',
+ '日常生活':'删除产品信息后，普通生活片段仍能独立成立；同时反查观点、身份和任务均无强证据。任一强结构成立，都不能用日常生活兜底。'
+};
+const labelBasis={
+ '促销机制':['标题或封面以价格、优惠、赠品、直播、囤货等购买利益吸引点击。','正文持续解释怎么买、多少钱、送什么、何时买或在哪里买。','对不同套装、渠道或机制进行计算和比较。','最终结论主要是购买建议，而不是产品效果结论。','以上证据至少命中两项；仅在结尾提一句购买渠道不成立。'],
+ '同类横测':['先逐件记录实际产品名称、出镜/使用/实质讲解证据和内容角色。','至少两件实际参与内容的产品属于同一或高度相近美护子类。','内容存在比较/选择任务，产品处于可替代或二选一关系，并输出差异、适用对象或选择结论。','不要求逐项PK、明确胜负、排序或拉踩。','版本名、系列名、历史使用、口头带过、合照或背景露出不计第二件产品。'],
+ '护肤方案 / 多品组合':['先逐件证明至少两件独立产品实际参与本篇内容。','产品之间是组合与协作关系，而不是竞争关系。','可按早晚、先后、使用步骤或功能角色共同完成美护目标。','每件产品必须承担可回溯、不可忽略的独立角色。','版本/系列/历史提及不能凑产品数量。'],
+ '单品主导':['产品计数以本篇实际出镜、使用或实质讲解证据为准。','曾用版本、同系列版本、可选版本和口头带过不自动增加产品数。','一个产品、一个美护问题或一条“产品—问题解决线”占据内容主体。','其他产品只作为背景、工具或轻量提及，不共同组织全文。','已进入美垂但不满足促销、横测或组合时，归入此类。'],
+ '观点价值':['能提炼出一句完整、可复述的生活命题或价值判断。','至少有两个理由、经历或内容段落支撑该命题。','观点真正组织正文，而不是标题口号或结尾感悟。','去掉产品后，观点、理由与论证仍然成立。'],
+ '身份阶段':['年龄、职业、家庭角色、亲密关系或人生阶段真实改变了问题、压力、生活方式、选择标准或观察视角。','把人物替换成另一年龄、职业或角色后，内容结构和选择会明显变化。','身份必须贯穿正文；只出现在标题、封面或一句自我介绍中不成立。','可记录的身份依据包括年龄阶段、职业身份、家庭角色、亲密关系与人生转折。'],
+ '场景任务':['一次地点、事件或任务推动全文，产品只是完成任务、应对环境或自我管理的工具。','正文存在任务过程、时间推进、行动步骤或场景变化。','去掉旅行、出差、购物、通勤、活动、地点或具体任务后，原结构会坍塌。','场景仅作为拍摄背景、效果类比或品牌灵感时不成立。'],
+ '日常生活':['没有强观点、不可替换的身份或明确任务主线。','内容由普通生活过程、个人状态、陪伴感和日常时间切片组织。','主要价值来自生活氛围与真实感，而不是产品知识。','若旁白持续讲功效、成分或使用步骤，即使画面是日常 vlog，也应回到美垂判断。','这是破圈分支的兜底类，必须在观点、身份和场景任务都不成立后使用。']
+};
+const extraExamples={
+ '促销机制':{pos:['“李佳琦直播间伊菲丹机制：买一套送哪些正装和小样？”'],neg:['“直播间买到了这款面霜，使用一个月后的真实感受。”正文讲体验 → 单品主导。']},
+ '同类横测':{pos:['“同品牌三款面霜如果形成选款映射则属系列选型；不同品牌面霜区别，一次说清。”'],neg:['“年度爱用：面霜、防晒、口红、洗发水。”不同品类且无共同标准 → 多品组合或破圈。']},
+ '护肤方案 / 多品组合':{pos:['“早C晚A怎么搭？哪些产品不能同时使用？”','“婚礼前一个月的护肤计划。”'],neg:['“618护肤套装怎么买最便宜？”核心是购买机制 → 促销机制。']},
+ '单品主导':{pos:['“这款精华为什么上脸会有热感？”','“油皮夏天如何选择面霜？”','“三重胶原技术到底解决什么问题？”'],neg:['主要解释价格、赠品和直播机制 → 促销机制。']},
+ '观点价值':{neg:['“法式女性的松弛哲学+品牌价值感。”若主要讲品牌故事或产品理念，不判观点价值。']},
+ '身份阶段':{pos:['“第一次成为妈妈后，我重新理解了照顾自己。”'],neg:['“送妈妈的面霜。”若没有母女关系或人物叙事，只是送礼推荐，不判身份阶段。']},
+ '场景任务':{pos:['“婚礼前一周的状态管理清单。”'],neg:['“南法灵感面霜。”这是品牌表达，不是旅行场景。']},
+ '日常生活':{pos:['“下班后不赶时间的普通晚上。”'],neg:['“孕期 routine。”若孕期身份改变内容判身份阶段；若讲产品安全和步骤则判美垂。']}
+};
+const extraEdges={
+ '促销机制':['标题用“最低价”吸引点击但优惠没有贯穿正文时，不判促销机制，回到单品、横测或组合判断。'],
+ '同类横测':['面霜和精华即使都解决抗老，产品角色不同，通常不判同类横测。','一个主产品占据绝大部分内容时，另一同类产品若仅被点名或露出，判单品主导；若获得评价、差异说明或与主产品形成比较关系，则判同类横测。'],
+ '护肤方案 / 多品组合':['“年度爱用”跨多个美护品类时，只有共同服务一套护理需求才可判多品组合。','步骤很多但实际只围绕一个主产品讲解，其他产品只是前后背景时，判单品主导。'],
+ '单品主导':['教程只使用一个核心产品，其他工具不承担美护产品角色时，仍判单品主导。','单品讲解包含搭配建议，但搭配没有形成独立方案时，仍判单品主导。'],
+ '身份阶段':['亲密关系并入身份阶段，不另立主类；需要时可作为二级属性记录。'],
+ '场景任务':['标题出现旅行、出差、婚礼等词不是充分条件，正文必须存在任务过程、时间推进或场景变化。'],
+ '日常生活':['普通护肤过程只有在生活事件、人物状态和陪伴感构成主要信息时，才判日常生活。']
+};
+[...labels.breakouts,...labels.verticals].forEach(x=>{const add=extraExamples[x.name];if(add?.pos)x.pos.push(...add.pos);if(add?.neg)x.neg.push(...add.neg);if(extraEdges[x.name])x.edge.push(...extraEdges[x.name])});
+const typeNames=['类型一','类型二','类型三','类型四','类型五'];
+function renderCards(target,data,family){const el=document.getElementById(target);el.innerHTML=data.map((x,i)=>`<article class="card border border-${i%6+1} span-6 dict-card" data-label="${x.id}"><div class="card-body"><span class="type-badge">${typeNames[i]}</span><h3>${labelIcons[x.name]||'📌'} ${x.name}</h3><h4 class="definition-title">定义</h4><p>${x.def}</p><div class="validation-pair"><div class="validation-box"><b>正向判断</b>${x.core}</div><div class="validation-box verify"><b>负向验证</b>${labelCounterfactual[x.name]}</div></div><section class="key"><h4>🔑 完整判定依据</h4><ul class="case-list">${(labelBasis[x.name]||[x.core]).map(v=>`<li>${v}</li>`).join('')}</ul></section><details><summary class="good">✓ 正向示例（${x.pos.length}）</summary><ul class="case-list">${x.pos.map(v=>`<li><b>示例：</b>${v}</li>`).join('')}</ul></details><details><summary class="bad">✕ 负向示例（${x.neg.length}）</summary><ul class="case-list">${x.neg.map(v=>`<li><b>示例：</b>${v}</li>`).join('')}</ul></details><details><summary class="edge">⚖ 最容易判错的边界（${x.edge.length}）</summary><ul class="case-list">${x.edge.map(v=>`<li>${v}</li>`).join('')}</ul></details></div></article>`).join('')}
+renderCards('breakoutCards',labels.breakouts,'破圈');renderCards('verticalCards',labels.verticals,'美垂');
+document.querySelector('#breakout .family-guide h3').textContent='四种类型与判断顺序';
+document.querySelector('#vertical .family-guide h3').textContent='五种类型与判断顺序';
+const aiRememberItems=document.querySelectorAll('#forai aside li');if(aiRememberItems[2])aiRememberItems[2].textContent='每个候选标签都要经过“正向判断 + 负向验证 + 相邻类型排除”。';
+const interactiveTitle=document.querySelector('.interactive h3');interactiveTitle.textContent='🖱️ 交互示例：沿流程做一次快速判断';interactiveTitle.insertAdjacentHTML('afterend','<p class="muted">这里只演示如何走路径；完整规则请以“破圈内容”和“美垂内容”页中的判定依据为准。</p>');
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active','btn-primary'));document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));b.classList.add('active','btn-primary');document.getElementById(b.dataset.page).classList.add('active');scrollTo({top:0,behavior:'smooth'});}));
+function applyFilter(scope){const root=document.getElementById(scope),q=document.querySelector(`.dict-search[data-scope="${scope}"]`).value.toLowerCase(),f=document.querySelector(`.dict-filter[data-scope="${scope}"]`).value;let n=0;root.querySelectorAll('.dict-card').forEach(c=>{const ok=(f==='all'||c.dataset.label===f)&&c.textContent.toLowerCase().includes(q);c.classList.toggle('hidden',!ok);if(ok)n++});document.getElementById(scope==='breakoutCards'?'breakoutCount':'verticalCount').textContent=`${n} 个标签`}
+document.querySelectorAll('.dict-search,.dict-filter').forEach(x=>x.addEventListener(x.tagName==='SELECT'?'change':'input',()=>applyFilter(x.dataset.scope)));
+let pathSteps=[];
+document.querySelectorAll('.choice').forEach(b=>b.addEventListener('click',()=>{pathSteps.push(b.dataset.path);decisionPath.textContent=pathSteps.join('  ➜  ');if(b.dataset.next){document.querySelector('.question.active').classList.remove('active');document.querySelector(`[data-q="${b.dataset.next}"]`).classList.add('active')}else{document.querySelector('.question.active').classList.remove('active');quizResult.hidden=false;quizResult.innerHTML=`判定结果：<b>${b.dataset.result}</b><br><small>上方路径已经记录了判断依据；请再到对应字典卡核对正反案例和边缘规则。</small>`;resetQuiz.hidden=false}}));
+resetQuiz.addEventListener('click',()=>{pathSteps=[];decisionPath.textContent='起点：检查促销';document.querySelectorAll('.question').forEach(x=>x.classList.remove('active'));document.querySelector('[data-q="promo"]').classList.add('active');quizResult.hidden=true;resetQuiz.hidden=true});
+const protocol=`ROLE: 你是美护内容结构分类器。标签体系有两个大类：美垂与破圈；下设八个小类。每篇笔记只输出一个主标签：促销机制、同类横测、护肤方案/多品组合、单品主导、观点价值、身份阶段、场景任务、日常生活。\n\nINPUT READING\n图文按以下顺序读取：全部图片（封面、所有内页、OCR与花字）→正文→标题→Tag。视频还必须读取完整画面、完整ASR、关键转场、产品集中段与结尾CTA。不要只看片段。\n\nUNIFIED VALIDATION\n对每个候选标签都执行同一闭环：①正向命中；②反向验证；③近邻排除。任何步骤不得跳过。\n\nALGORITHM\n1. 重建完整内容主线，并写出去产品后的剩余主线。\n2. 先查促销机制：去掉价格/优惠/赠品/直播/购买方式，主要价值是否消失？\n3. 产品域闸门：若去掉美护后生活主线仍成立，进入破圈；若产品逻辑组织全文，进入美垂。\n4. 产品实例核验：逐件输出产品名称、实际出镜/使用/实质讲解证据、内容角色。版本名、系列名、历史使用、可选版本、口头带过、合照和背景露出不自动增加产品数。无法证明第二件独立产品时，产品数=1。\n5. 美垂固定顺序：促销已排除；两件以上实际同类产品进入比较/选择任务并形成差异或选择结论→同类横测；两件以上实际产品按步骤/功能协作完成共同目标→多品组合；否则→单品主导。\n6. 破圈固定顺序：观点价值→身份阶段→场景任务→日常生活，并逐级写明未触发原因。\n7. 命中后执行专属反证测试并记录次候选排除原因；反证失败则继续流程。\n\nANTI-SHORTCUTS\n禁止按产品名称数量、版本词数量、标题词或产品段时长打标。横测必须有至少两件实际产品及比较/选择任务；多品必须有至少两件实际产品及协作关系。仅提到“以前用过轻盈版”“同系列还有滋润版”时不得计为第二件产品。\n\nOUTPUT JSON\n{\"full_mainline\":\"完整内容主线\",\"without_product_mainline\":\"去产品后剩余主线\",\"major_category\":\"美垂|破圈\",\"product_instances\":[{\"name\":\"产品名\",\"evidence\":\"出镜/使用/讲解证据\",\"role\":\"内容角色\"}],\"product_count\":1,\"priority_path\":[\"逐级判断记录\"],\"label\":\"单一主标签\",\"confidence\":\"high|medium|low\",\"evidence\":[\"至少2条结构证据\"],\"counterfactual\":\"专属反证结果\",\"alternative\":\"次候选\",\"exclusion_reason\":\"排除原因\",\"needs_media_review\":false}`;
+const completeProtocol=protocol+`\n\nSUPPLEMENT\n电子榨菜、出行好物、贵价好物与其他形式词一样，不能直接决定标签。反事实测试只用于判断内容结构能否独立成立，不用于猜测用户的主观点击动机。\n\nUNCERTAIN CASE\n证据不足时不要强行终判；同时输出文本候选标签、候选一、候选二、不确定原因、需要补看的媒体证据、置信度（高/中/低），并设置 needs_media_review=true。`;
+const finalProtocol=completeProtocol.replaceAll('正向命中','正向判断').replaceAll('反向验证','负向验证').replaceAll('反证测试','负向验证');aiPrompt.textContent=finalProtocol.replaceAll('→','➜');const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const arrowNodes=[];while(arrowWalker.nextNode())arrowNodes.push(arrowWalker.currentNode);arrowNodes.forEach(n=>{if(n.nodeValue.includes('→'))n.nodeValue=n.nodeValue.replaceAll('→','➜')});copyPrompt.addEventListener('click',async()=>{await navigator.clipboard.writeText(finalProtocol);copyState.textContent=' 已复制 ✓';setTimeout(()=>copyState.textContent='',1800)});
+</script>
+<script src="./rules-sync.js"></script>
+<script src="./v13-copy-sync.js"></script>
+</body>
+</html>

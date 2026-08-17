@@ -1,0 +1,17 @@
+{
+  "embedded_dictionary_version": "v13-report-hierarchy-20260817",
+  "rules_version": "v13",
+  "asset_path": "assets/embedded-label-dictionary/v13",
+  "canonical_public_url": "https://meihu-label-dictionary.vercel.app/",
+  "required_report_path": "dictionary/index.html",
+  "integration_mode": "copy_snapshot_and_embed",
+  "updated_at": "2026-08-17T18:30:00+08:00",
+  "visual_contract": {
+    "primary_heading": "小红书笔记的统一打标依据",
+    "supplementary_strip": ["适用对象", "最终输出", "内容依据"],
+    "core_section_heading": "先判断内容属于哪一种打标类型",
+    "core_section_index": "01",
+    "family_count": 2,
+    "label_count": 9
+  }
+}
